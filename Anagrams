@@ -1,0 +1,17 @@
+#code in python 
+
+class Solution:
+    def anagrams(self, A):
+        res = []
+        li = []
+        n = len(A)
+        for i in range(n):
+            d_ = {ch:A[i].count(ch) for ch in set(A[i])}
+            if d_ in li:
+                ind = li.index(d_)
+                res[ind].append(i+1)
+            else:
+                li.append(d_)
+                res.append([i+1])
+        
+        return res

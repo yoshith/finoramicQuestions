@@ -1,0 +1,23 @@
+#3sum code in python
+
+class Solution:    
+    def threeSumClosest(self, A, B):
+        A=sorted(A)
+        prev=(-2**31)
+        for i in range(len(A)):
+            target=(B-A[i])
+            j=i+1
+            k=len(A)-1
+            c=(-2**31)
+            while j<k:
+                c=A[j]+A[k]
+                if c<target:
+                    j=j+1
+                elif c>target:
+                    k=k-1
+                else:
+                    return A[i]+c
+            su=A[i]+c
+            if abs(B-prev)>abs(B-su):
+                prev=su
+        return prev
